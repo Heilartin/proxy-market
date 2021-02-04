@@ -12,7 +12,7 @@ import (
 
 const (
 	MyTimeFormat          = "2006-01-02T15:04:05"
-	ProxyMarketTimeFormat = "2021-02-27 21:00:00"
+	ProxyMarketTimeFormat = "2006-01-02 15:04:05"
 )
 
 type ProxyMarketTime sql.NullTime
