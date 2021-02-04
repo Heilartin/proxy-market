@@ -1,7 +1,5 @@
 package proxy_market
 
-import "time"
-
 // ProxyMarketListRequest:
 // Type: [ ipv4, ipv6, all ] Use proxy_market.ProxyType{}
 // Page: minimum: 1
@@ -30,21 +28,21 @@ type ProxyMarketListResponse struct {
 }
 
 type ProxyMarket struct {
-	ID               int         `json:"id" csv:"id"`
-	Login            string      `json:"login" csv:"login"`
-	Password         string      `json:"password" csv:"password"`
-	TariffID         string      `json:"tariff_id" csv:"tariff_id"`
-	Active           int         `json:"active" csv:"active"`
-	ExpiredAt        *time.Time  `json:"expired_at" csv:"expired_at"`
-	CreatedAt        *time.Time  `json:"created_at" csv:"created_at"`
-	UpdatedAt        *time.Time  `json:"updated_at" csv:"updated_at"`
-	Comment          *string     `json:"comment" csv:"comment"`
-	IP               string      `json:"ip" csv:"ip"`
-	IPOut            string      `json:"ip_out" csv:"ip_out"`
-	HTTPPort         int         `json:"http_port" csv:"http_port"`
-	SocksPort        int         `json:"socks_port" csv:"socks_port"`
-	AutoProlongation int         `json:"auto_prolongation" csv:"auto_prolongation"`
-	Speed            int         `json:"speed" csv:"speed"`
+	ID               int         		`json:"id" csv:"id"`
+	Login            string      		`json:"login" csv:"login"`
+	Password         string      		`json:"password" csv:"password"`
+	TariffID         string      		`json:"tariff_id" csv:"tariff_id"`
+	Active           int         		`json:"active" csv:"active"`
+	ExpiredAt        *ProxyMarketTime   `json:"expired_at" csv:"expired_at"`
+	CreatedAt        *ProxyMarketTime   `json:"created_at" csv:"created_at"`
+	UpdatedAt        *ProxyMarketTime   `json:"updated_at" csv:"updated_at"`
+	Comment          *string     		`json:"comment" csv:"comment"`
+	IP               string      		`json:"ip" csv:"ip"`
+	IPOut            string      		`json:"ip_out" csv:"ip_out"`
+	HTTPPort         int         		`json:"http_port" csv:"http_port"`
+	SocksPort        int         		`json:"socks_port" csv:"socks_port"`
+	AutoProlongation int         		`json:"auto_prolongation" csv:"auto_prolongation"`
+	Speed            int         		`json:"speed" csv:"speed"`
 }
 
 // ProxyMarketBuyRequest
