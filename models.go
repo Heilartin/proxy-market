@@ -15,16 +15,18 @@ type ProxyMarketListRequest struct {
 type ProxyMarketListResponse struct {
 	Success bool   `json:"success"`
 	Balance string `json:"balance"`
-	List    struct {
-		Error    bool `json:"error"`
-		Interval struct {
-			From int `json:"from"`
-			To   int `json:"to"`
-		} `json:"interval"`
-		Total    int `json:"total"`
-		PageSize int `json:"page_size"`
-		Data     []*ProxyMarket `json:"data"`
-	} `json:"list"`
+	List    *ProxyMarketList `json:"list"`
+}
+
+type ProxyMarketList struct {
+	Error    bool `json:"error"`
+	Interval struct {
+		From int `json:"from"`
+		To   int `json:"to"`
+	} `json:"interval"`
+	Total    int `json:"total"`
+	PageSize int `json:"page_size"`
+	Data     []*ProxyMarket `json:"data"`
 }
 
 type ProxyMarket struct {

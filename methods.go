@@ -47,6 +47,9 @@ func (c *ProxyMarketClient) GetProxyListByCustom(reqBody *ProxyMarketListRequest
 	if err != nil {
 		return nil, err
 	}
+	if c.validResponse(response) != true {
+		return nil, errors.New("response invalid")
+	}
 	return response, nil
 }
 
@@ -78,6 +81,9 @@ func (c *ProxyMarketClient) GetProxyListAllByNewest() (*ProxyMarketListResponse,
 	if err != nil {
 		return nil, err
 	}
+	if c.validResponse(response) != true {
+		return nil, errors.New("response invalid")
+	}
 	return response, nil
 }
 
@@ -108,6 +114,9 @@ func (c *ProxyMarketClient) GetProxyListAllByOldest() (*ProxyMarketListResponse,
 	err = json.Unmarshal(br, &response)
 	if err != nil {
 		return nil, err
+	}
+	if c.validResponse(response) != true {
+		return nil, errors.New("response invalid")
 	}
 	return response, nil
 }
@@ -202,4 +211,17 @@ func (c *ProxyMarketClient) GetProxyCSVFile() (string, error)  {
 		return "", err
 	}
 	return csvContent, nil
+}
+
+func (c *ProxyMarketClient) validResponse(response *ProxyMarketListResponse) bool  {
+	if response.Success == false {
+		return false
+	}
+	if response.List == nil {
+		return false
+	}
+	if response.List.Data == nil {
+		return false
+	}
+	return true
 }
